@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
     <head>
         <meta charset="UTF-8">
@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
 
         <!--Favicon-->
-        <link rel="icon" href="{{url_for('static', filename='data-science.png')}}">
+        <link rel="icon" href="{{url_for('static', filename='favicon.png')}}">
 
         <!--Google Fonts-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,6 +17,7 @@
     </head>
 
     <body>
+        <!--Judul-->
         <div class="top">
             <h1>Klasifikasi Warna</h1>
         </div>
@@ -55,6 +56,8 @@
             {% endif %}
             {% endwith %}
 
+
+            <!--Form unggah citra-->
             <form action="{{url_for('home')}}" method="post" enctype="multipart/form-data">
 
                 <label for="image_file">Unggah Citra disini:</label><br><br>
@@ -63,6 +66,7 @@
             </form>
         </div>
 
+        <!--Footer-->
         <div class="bottom">
           <p>© 2022 Kelompok 4</p>
         </div>

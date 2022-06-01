@@ -14,7 +14,7 @@ app.config['UPLOAD_PATH'] = "static"
 app.config['SESSION_TYPE'] = 'filesystem'
 
 
-# Setup home routing
+# Set laman berada
 @app.route("/", methods=["GET", "POST"])
 def home():
 
@@ -62,12 +62,11 @@ def home():
             def to_dictionary(key, value):
                 return dict(zip(key, value))
 
-
             # Merge 2 list ke dalam sebuah dictionary
-            color_dict = to_dictionary(props_list, hex_values)
+            dict_warna = to_dictionary(props_list, hex_values)
 
             # Sort/urutkan dict secara descending
-            sorted_dict = dict(sorted(color_dict.items(), reverse=True))
+            sorted_dict = dict(sorted(dict_warna.items(), reverse=True))
 
             return render_template("index.html", image=img.filename, colors=sorted_dict)
         else:
@@ -76,6 +75,6 @@ def home():
             return redirect(url_for("home"))
 
 
-# start the flask application
+# Jalankan flask app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
