@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Klasifikasi Warna</title>
+
+        <!--Personal styles-->
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+
+        <!--Favicon-->
+        <link rel="icon" href="{{url_for('static', filename='data-science.png')}}">
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="top">
+            <h1>Klasifikasi Warna</h1>
+        </div>
+
+        <div class="middle">
+
+            {% if image: %}
+            <img src="{{url_for('static', filename=image)}}" alt="Uploaded Image">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Warna</th>
+                        <th>Kode Warna</th>
+                        <th>Persentase</th>
+                    </tr>
+                </thead>
+
+                 <tbody>
+
+                    {% for (key, value) in colors.items(): %}
+                    <tr>
+                        <td style="background-color: {{value}}; width: 167px"></td>
+                        <td>{{ value }}</td>
+                        <td>{{ key }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <p>{{ messages[0] }}</p>
+            {% endif %}
+            {% endwith %}
+
+            <form action="{{url_for('home')}}" method="post" enctype="multipart/form-data">
+
+                <label for="image_file">Unggah Citra disini:</label><br><br>
+                <input type="file" name="image_file" id="image_file" accept="image/png, image/jpeg"><br><br>
+                <input type="submit" value="Unggah">
+            </form>
+        </div>
+
+        <div class="bottom">
+          <p>© 2022 Kelompok 4</p>
+        </div>
+
+    </body>
+</html>
