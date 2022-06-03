@@ -1,2 +1,1 @@
-# Klasifikasi Warna menggunakan K-means
-
+# Pallete Color Clustering
